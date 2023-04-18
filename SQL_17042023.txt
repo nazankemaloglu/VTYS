@@ -1,0 +1,46 @@
+create database OKUL1
+use OKUL1
+
+create table Bolum1(
+BolumKodu int identity(1,1) primary key,
+BolumAdi nvarchar(20) not null
+)
+
+create table Ders1(
+DersKodu nvarchar(7) primary key,
+DersAdi nvarchar(30) not null,
+Bolum_Kodu int foreign key references Bolum1(BolumKodu)
+)
+
+create table Not11(
+NotId int identity(1,1) primary key,
+OgrNo int foreign key references Ogrenci1(Ogr_No),
+Ders_Kodu nvarchar(7) foreign key references Ders1(DersKodu),
+Vize int,
+Final int
+)
+
+insert into Bolum(BolumAdi) values
+('Makina Mühendisligi'),
+('İktisat'),
+('Biyoloji'),
+('Dis Hekimligi')
+
+select BolumAdi from Bolum 
+
+insert into Ders(Ders_Kodu,DersAdi,Bolum_Kodu) values 
+('MM1','Termodinamik', 1),
+('MM3',	'Teknik Resim', 1),
+('B1', 'Biyokimya', 3),
+('B4', 'Genel Biyoloji', 3)
+
+select Ad,Soyad from Ogrenci inner join Not_ 
+on Ogrenci.OgrNo=Not_.Ogr_No where Not_.Vize>50
+
+select DersAdi from Ders inner join Bolum 
+on Bolum.BolumKodu=Ders.Bolum_Kodu 
+where BolumAdi='Makina Mühendisligi'
+
+select Ad,Soyad from Ogrenci inner join Not_
+on Ogrenci.OgrNo=Not_.Ogr_No
+where Vize>80 and Final>75

@@ -1,0 +1,25 @@
+select * from Customers order by CustomerID DESC
+
+select * from Customers order by Country ASC, ContactName DESC
+
+select min(UnitPrice) from Products
+
+select max(UnitPrice) from Products
+
+select count(ProductID) from Products
+
+select AVG(UnitPrice) from Products
+
+select SUM(UnitsInStock) from Products;
+
+select count(CustomerID), Country from Customers Group by Country;
+
+select count(CustomerID), Country from Customers Group by Country Order by count(CustomerID);
+
+select top 10 * from Customers
+
+select TOP 50 PERCENT * FROM Customers;
+
+select top 3 * from Customers where Country='Germany';
+
+select distinct Country from Customers
